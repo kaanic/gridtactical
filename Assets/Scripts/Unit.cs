@@ -6,6 +6,10 @@ public class Unit : MonoBehaviour
 
     private Vector3 targetPosition;
 
+    private void Awake() {
+        targetPosition = transform.position; // the unit moves to 0,0,0 otherwise ?
+    }
+
     private void Update()
     {
         float stoppingDistance = 0.1f;
@@ -25,14 +29,9 @@ public class Unit : MonoBehaviour
         {
             unitAnimator.SetBool("IsWalking", false);
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Move(MouseWorld.GetPosition()); 
-        }
     }
 
-    private void Move(Vector3 target)
+    public void Move(Vector3 target)
     {
         targetPosition = target;
     }
